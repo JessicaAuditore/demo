@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "user")
-@ApiModel(value = "用户模型19519549")
+@ApiModel(value = "用户模型")
 @Data
 public class User implements Serializable {
 
