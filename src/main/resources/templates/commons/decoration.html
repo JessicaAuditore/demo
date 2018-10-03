@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--用th:fragment抽取公共代码-->
+<table cellSpacing=0 cellPadding=0 width="98%" border=0 th:fragment="top">
+    <tbody>
+    <tr>
+        <td width=15><img th:src="@{/images/new_019.jpg}" border=0></td>
+        <td width="100%" th:background="@{/images/new_020.jpg}" height=20></td>
+        <td width=15><img th:src="@{/images/new_021.jpg}" border=0></td>
+    </tr>
+    </tbody>
+</table>
+
+<table cellSpacing=0 cellPadding=0 width="98%" border=0 th:fragment="bottom">
+    <tbody>
+    <tr>
+        <td width=15><img th:src="@{/images/new_024.jpg}" border=0></td>
+        <td align=middle width="100%" th:background="@{/images/new_025.jpg}" height=15></td>
+        <td width=15><img th:src="@{/images/new_026.jpg}" border=0></td>
+    </tr>
+    </tbody>
+</table>
+
+<tr th:fragment="findCustomer">
+    <td height="25">
+        <table cellSpacing=0 cellPadding=2 border=0>
+            <tbody>
+            <tr>
+                <td>客户名称：</td>
+                <td>
+                    <input class="textbox" id="sChannel2" style="width: 80px" maxLength="50" name="customer_name">
+                </td>
+                <td>客户级别：</td>
+                <td>
+                    <select name="customer_dict.dict_id">
+                        <option value="">--请选择--</option>
+                        <option th:value="${dict.dict_id }" th:each="dict:${listDict}">
+                            [[${dict.dict_name }]]
+                        </option>
+                    </select>
+                </td>
+                <td>
+                    <input class="button" id="sButton2" type="submit" value=" 筛选 " name="sButton2">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr th:fragment="findLinkman">
+    <td height="25">
+        <table cellSpacing="0" cellPadding="2" border="0">
+            <tbody>
+            <tr>
+                <td>联系人名称：</td>
+                <td>
+                    <input class="textbox" id="sChannel2" style="width: 80px" maxLength="50" name="linkman_name">
+                </td>
+                <td>所属客户：</td>
+                <td>
+                    <select name="customer.customer_id">
+                        <option value="">--请选择--</option>
+                        <option th:value="${customer.customer_id }" th:each="customer:${customerList}">
+                            [[${customer.customer_name }]]
+                        </option>
+                    </select>
+                </td>
+
+                <td>
+                    <input class="button" id="sButton2" type="submit" value=" 筛选 " name="sButton2">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </td>
+</tr>
+
+<!--用id选择器抽取公共代码-->
+
+</body>
+</html>

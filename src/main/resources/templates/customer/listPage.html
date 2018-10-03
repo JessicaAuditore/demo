@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/Style.css}" type=text/css rel=stylesheet>
+    <link th:href="@{/css/Manage.css}" type=text/css rel=stylesheet>
+</head>
+<body>
+<form id="customerForm" name="customerForm" th:action="@{/customer/find}" method=post>
+    <div th:replace="commons/decoration::top"></div>
+    <table cellSpacing=0 cellPadding=0 width="98%" border=0>
+        <tbody>
+        <tr>
+            <td width=15 th:background="@{/images/new_022.jpg}">
+                <img th:src="@{/images/new_022.jpg}" border=0></td>
+            <td vAlign=top width="100%" bgColor=#ffffff>
+                <table cellSpacing=0 cellPadding=5 width="100%" border=0>
+                    <tr>
+                        <td class=manageHead>当前位置：客户管理 &gt; 客户列表</td>
+                    </tr>
+                    <tr>
+                        <td height=2></td>
+                    </tr>
+                </table>
+                <table borderColor=#cccccc cellSpacing=0 cellPadding=0
+                       width="100%" align=center border=0>
+                    <tbody>
+                    <div th:replace="commons/decoration::findCustomer"></div>
+                    <tr>
+                        <td>
+                            <table id="grid"
+                                   style="BORDER-TOP-WIDTH: 0px; FONT-WEIGHT: normal; BORDER-LEFT-WIDTH: 0px; BORDER-LEFT-COLOR: #cccccc; BORDER-BOTTOM-WIDTH: 0px; BORDER-BOTTOM-COLOR: #cccccc; WIDTH: 100%; BORDER-TOP-COLOR: #cccccc; FONT-STYLE: normal; BACKGROUND-COLOR: #cccccc; BORDER-RIGHT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-COLOR: #cccccc"
+                                   cellSpacing=1 cellPadding=2 rules=all border=0>
+                                <tbody>
+                                <tr style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none">
+                                    <td>客户名称</td>
+                                    <td>客户级别</td>
+                                    <td>客户地址</td>
+                                    <td>客户电话</td>
+                                    <td>客户来源</td>
+                                    <td>操作</td>
+                                </tr>
+                                <tr th:each="customer:${pageBean.list}"
+                                    style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
+                                    <td>[[${customer.customer_name }]]</td>
+                                    <td th:text="${customer.customer_dict!=null}?${customer.customer_dict.dict_name }:''"></td>
+                                    <td>[[${customer.customer_address }]]</td>
+                                    <td>[[${customer.customer_telephone }]]</td>
+                                    <td>[[${customer.customer_source }]]</td>
+                                    <td>
+                                        <button th:if="${session.user.user_level=='管理员'}"
+                                                th:attr="edit_uri=@{/customer/}+${customer.customer_id}"
+                                                class="editBtn">修改
+                                        </button>
+                                        <button th:if="${session.user.user_level=='管理员'}"
+                                                th:attr="del_uri=@{/customer/}+${customer.customer_id}"
+                                                class="deleteBtn">删除
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span id="pagelink">
+                                <div style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right">
+                                    共<b>[[${pageBean.totalCount}]]</b>条记录,<b>[[${pageBean.totalPage}]]</b>页
+                                    ,当前第<b>[[${pageBean.currentPage+1}]]</b>页
+                                    <a th:if="${pageBean.currentPage!=0}"
+                                       th:href="@{/customer/listPage?size=3&&page=}+${pageBean.currentPage-1}">前一页</a>
+                                    <a th:if="${pageBean.currentPage!=pageBean.totalPage-1}"
+                                       th:href="@{/customer/listPage?size=3&&page=}+${pageBean.currentPage+1}">后一页</a>
+                                </div>
+                            </span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td width=15 th:background="@{/images/new_023.jpg}">
+                <img th:src="@{/images/new_023.jpg}" border=0></td>
+        </tr>
+        </tbody>
+    </table>
+    <div th:replace="commons/decoration::bottom"></div>
+</form>
+
+
+<form id="deleteCustomerForm" method="post">
+    <input type="hidden" name="_method" value="delete">
+</form>
+<form id="editCustomerForm" method="get"></form>
+
+<script type="text/javascript" th:src="@{/js/jquery-3.2.1.slim.min.js}"></script>
+<script>
+    $(".deleteBtn").click(function () {
+        $("#deleteCustomerForm").attr("action", $(this).attr("del_uri")).submit();
+        return false;
+    });
+    $(".editBtn").click(function () {
+        $("#editCustomerForm").attr("action", $(this).attr("edit_uri")).submit();
+        return false;
+    });
+</script>
+</body>
+</html>

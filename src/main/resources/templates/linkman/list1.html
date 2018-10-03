@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/Style.css}" type=text/css rel=stylesheet>
+    <link th:href="@{/css/Manage.css}" type=text/css rel=stylesheet>
+</head>
+<body>
+<form id="linkmanForm" name="linkmanForm" th:action="@{/linkman/find}" method="post">
+    <div th:replace="commons/decoration::top"></div>
+    <table cellSpacing=0 cellPadding=0 width="98%" border=0>
+        <tbody>
+        <tr>
+            <td width=15 th:background="@{/images/new_022.jpg}">
+                <img th:src="@{/images/new_022.jpg}" border=0></td>
+            <td vAlign="top" width="100%" bgColor="#ffffff">
+                <table cellSpacing=0 cellPadding=5 width="100%" border=0>
+                    <tr>
+                        <td class="manageHead">当前位置：联系人管理 &gt; 联系人列表</td>
+                    </tr>
+                    <tr>
+                        <td height="2"></td>
+                    </tr>
+                </table>
+                <table borderColor="#cccccc" cellSpacing=0 cellPadding=0
+                       width="100%" align="center" border=0>
+                    <tbody>
+                    <div th:replace="commons/decoration::findLinkman"></div>
+                    <tr>
+                        <td>
+                            <table id="grid"
+                                   style="border-top-width: 0px; font-weight: normal; border-left-width: 0px; border-left-color: #cccccc; border-bottom-width: 0px; border-bottom-color: #cccccc; width: 100%; border-top-color: #cccccc; font-style: normal; background-color: #cccccc; border-right-width: 0px; text-decoration: none; border-right-color: #cccccc"
+                                   cellspacing=1 cellpadding=2 rules=all border=0>
+                                <tbody>
+                                <tr style="font-weight: bold; font-style: normal; background-color: #eeeeee; text-decoration: none">
+                                    <td>联系人名称</td>
+                                    <td>联系人性别</td>
+                                    <td>联系人地址</td>
+                                    <td>联系人电话</td>
+                                    <td>所属顾客</td>
+                                    <td>操作</td>
+                                </tr>
+                                <tr th:each="linkman:${linkmanList}"
+                                    style="font-weight: normal; font-style: normal; background-color: white; text-decoration: none">
+                                    <td>[[${linkman.linkman_name }]]</td>
+                                    <td th:text="${linkman.linkman_gender=='1'}?'男':(${linkman.linkman_gender=='2'}?'女':'')"></td>
+                                    <td>[[${linkman.linkman_address }]]</td>
+                                    <td>[[${linkman.linkman_telephone }]]</td>
+                                    <td th:text="${linkman.customer!=null}?${linkman.customer.customer_name }:''"></td>
+                                    <td>
+                                        <button th:if="${session.user.user_level=='管理员'}"
+                                                th:attr="edit_uri=@{/linkman/}+${linkman.linkman_id}"
+                                                class="editBtn">修改
+                                        </button>
+                                        <button th:if="${session.user.user_level=='管理员'}"
+                                                th:attr="del_uri=@{/linkman/}+${linkman.linkman_id}"
+                                                class="deleteBtn">删除
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td width=15 th:background="@{/images/new_023.jpg}">
+                <img th:src="@{/images/new_023.jpg}" border=0>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div th:replace="commons/decoration::bottom"></div>
+</form>
+
+<form id="deleteLinkmanForm" method="post">
+    <input type="hidden" name="_method" value="delete">
+</form>
+<form id="editLinkmanForm" method="get"></form>
+
+<script type="text/javascript" th:src="@{/js/jquery-3.2.1.slim.min.js}"></script>
+<script>
+    $(".deleteBtn").click(function () {
+        $("#deleteLinkmanForm").attr("action", $(this).attr("del_uri")).submit();
+        return false;
+    });
+    $(".editBtn").click(function () {
+        $("#editLinkmanForm").attr("action", $(this).attr("edit_uri")).submit();
+        return false;
+    });
+</script>
+</body>
+</html>

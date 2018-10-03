@@ -1,0 +1,67 @@
+body {
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    margin: 0px;
+    padding-top: 0px;
+    background-color: #2a8dc8
+}
+
+body {
+    font-size: 11px;
+    color: #003366;
+    font-family: Verdana
+}
+
+td {
+    font-size: 11px;
+    color: #003366;
+    font-family: Verdana
+}
+
+div {
+    font-size: 11px;
+    color: #003366;
+    font-family: Verdana
+}
+
+p {
+    FONT-SIZE: 11px;
+    COLOR: #003366;
+    font-family: Verdana
+}
+
+.mainMenu {
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    color: #000000
+}
+
+A.style2:link {
+    padding-left: 4px;
+    color: #0055bb;
+    text-decoration: none
+}
+
+A.style2:visited {
+    padding-left: 4px;
+    color: #0055bb;
+    text-decoration: none
+}
+
+A.style2:hover {
+    padding-left: 4px;
+    color: #ff0000;
+    text-decoration: none
+}
+
+A.active {
+    padding-left: 4px;
+    color: #ff0000;
+    text-decoration: none
+}
+
+.span {
+    color: #ff0000;
+}

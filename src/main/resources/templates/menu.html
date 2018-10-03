@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/menu.css}">
+    <script type="text/javascript" th:src="@{/js/menu.js}"></script>
+</head>
+<body>
+<form>
+    <table cellSpacing=0 cellPadding=0 width=210 align=center border=0>
+        <tbody>
+        <tr>
+            <td width=15><img th:src="@{/images/new_005.jpg}" border=0></td>
+            <td align=middle width=180 th:background="@{/images/new_006.jpg}"
+                height=35><B>人力资源 －功能菜单</B></td>
+            <td width=15><img th:src="@{/images/new_007.jpg}" border=0></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table cellSpacing=0 cellPadding=0 width=210 align=center border=0>
+        <tbody>
+        <tr>
+            <td width=15 th:background="@{/images/new_008.jpg}"></td>
+            <td vAlign=top width=180 bgColor=#ffffff>
+                <table cellSpacing=0 cellPadding=3 width=165 align=center border=0>
+                    <tbody>
+                    <tr>
+                        <td class=mainMenu onClick="MenuDisplay('table_1');">
+                            <span class=span id=table_1Span>＋</span> 客户管理
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table id=table_1 style="DISPLAY: none" cellSpacing=0 cellPadding=2 width=155 align=center
+                                   border=0>
+                                <tbody>
+                                <tr>
+                                    <td class=menuSmall>
+                                        <a class=style2 th:href="@{/customer/toAddPage}" target=main>－ 新增客户</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=menuSmall>
+                                        <a class=style2 th:href="@{/customer/list}" target=main>－ 客户列表</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=menuSmall>
+                                        <a class=style2 th:href="@{/customer/listPage}" target=main>－ 分页客户列表</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td th:background="@{/images/new_027.jpg}" height=1></td>
+                    </tr>
+                    <tr>
+                        <td class=mainMenu onClick="MenuDisplay('table_2');"><span
+                                class=span id=table_2Span>＋</span> 联系人管理
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table id=table_2 style="display: none" cellSpacing=0 cellPadding=2 width=155 align=center
+                                   border=0>
+                                <tbody>
+                                <tr>
+                                    <td class=menuSmall>
+                                        <a class=style2 th:href="@{/linkman/toAddPage}" target=main>－ 新增联系人</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=menuSmall>
+                                        <a class=style2 th:href="@{/linkman/list}" target=main>－ 联系人列表</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td th:background="@{/images/new_027.jpg}" height=1></td>
+                    </tr>
+                    <tr>
+                        <td class=mainMenu onClick="MenuDisplay('table_5');"><span
+                                class=span id=table_5Span>＋</span> 客户拜访管理
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table id=table_5 style="display: none" cellSpacing=0
+                                   cellPadding=2 width=155 align=center border=0>
+                                <tbody>
+                                <tr>
+                                    <td class=menuSmall>
+                                        <a class=style2 th:href="@{/visit/toAddPage}" target=main>－ 新增客户拜访</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=menuSmall>
+                                        <a class=style2 th:href="@{/visit/list}" target=main>－ 客户拜访列表</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td th:background="@{/images/new_027.jpg}" height=1></td>
+                    </tr>
+                    <tr>
+                        <td class=mainMenu onClick="MenuDisplay('table_3');"><span
+                                class=span id=table_3Span>＋</span> 综合查询
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table id=table_3 style="DISPLAY: none" cellSpacing=0
+                                   cellPadding=2 width=155 align=center border=0>
+                                <tbody>
+                                <tr>
+                                    <td class=menuSmall>
+                                        <a class=style2 th:href="@{/customer/toSelectCustomerPage}" target=main>－
+                                            客户信息查询</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=menuSmall>
+                                        <a class=style2 th:href="@{/linkman/toSelectLinkManPage}" target=main>－
+                                            联系人信息查询</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=menuSmall>
+                                        <a class=style2 th:href="@{/visit/toSelectVisitPage}" target=main>－ 客户拜访记录查询</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td th:background="@{/images/new_027.jpg}" height=1></td>
+                    </tr>
+                    <tr>
+                        <td class=mainMenu onClick="MenuDisplay('table_4');"><span
+                                class=span id=table_4Span>＋</span> 统计分析
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table id=table_4 style="DISPLAY: none" cellSpacing=0
+                                   cellPadding=2 width=155 align=center border=0>
+                                <tbody>
+                                <tr>
+                                    <td class=menuSmall>
+                                        <a class=style2 th:href="@{/customer/countLevel}" target=main>－ 客户级别统计</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=menuSmall>
+                                        <a class=style2 th:href="@{/customer/countSource}" target=main>－ 客户来源统计</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td th:background="@{/images/new_027.jpg}" height=1></td>
+                    </tr>
+                    <tr>
+                        <td class=mainMenu onClick="MenuDisplay('table_6');">
+                            <span class=span id=table_6Span>＋</span> 系统管理
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table id=table_6 style="display: none" cellSpacing=0 cellPadding=2 width=155 align=center
+                                   border=0>
+                                <tbody>
+                                <tr>
+                                    <td class=menuSmall>
+                                        <a class=style2 th:href="@{/user_list}" target=main>－ 角色管理</a></td>
+                                </tr>
+                                <tr>
+                                    <td class=menuSmall>
+                                        <a class=style2 th:href="@{/user_list}" target=main>－ 用户管理</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class=menuSmall>
+                                        <a class=style2 th:href="@{/user_list}" target=main>－ 数据字典</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td width=15 th:background="@{/images/new_009.jpg}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <table cellSpacing=0 cellPadding=0 width=210 align=center border=0>
+        <tbody>
+        <tr>
+            <td width=15><img th:src="@{/images/new_010.jpg}" border=0></td>
+            <td align=middle width=180 th:background="@{/images/new_011.jpg}" height=15></td>
+            <td width=15><img th:src="@{/images/new_012.jpg}" border=0></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>

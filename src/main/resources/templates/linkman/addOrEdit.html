@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/Style.css}" type=text/css rel=stylesheet>
+    <link th:href="@{/css/Manage.css}" type=text/css rel=stylesheet>
+</head>
+<body>
+<form id="linkmanForm" name="linkmanForm" th:action="@{/linkman/}" method="post">
+    <div th:replace="commons/decoration::top"></div>
+    <table cellSpacing=0 cellPadding=0 width="98%" border=0>
+        <tbody>
+        <tr>
+            <td width="15" th:background="@{/images/new_022.jpg}">
+                <img th:src="@{/images/new_022.jpg}" border=0></td>
+            <td vAlign="top" width="100%" bgColor="#ffffff">
+                <table cellSpacing="0" cellPadding="5" width="100%" border=0>
+                    <tr>
+                        <td class="manageHead"
+                            th:text="${linkman!=null}?'当前位置：联系人管理 > 编辑联系人':'当前位置：联系人管理 > 添加联系人'">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="2"></td>
+                    </tr>
+                </table>
+                <input type="hidden" name="_method" value="put" th:if="${linkman!=null}">
+                <input type="hidden" name="linkman_id" th:if="${linkman!=null}" th:value="${linkman.linkman_id}">
+                <table cellSpacing=0 cellPadding=5 border=0>
+                    <tr>
+                        <td>联系人名称：</td>
+                        <td>
+                            <input class="textbox" id="sChannel2" th:value="${linkman!=null}?${linkman.linkman_name}"
+                                   style="width: 180px" maxLength="50" name="linkman_name">
+                        </td>
+                        <td>联系人性别 ：</td>
+                        <td>
+                            <input type="radio" value="1" name="linkman_gender" th:checked="${linkman!=null&&linkman.linkman_gender=='1'}">男
+                            <input type="radio" value="2" name="linkman_gender" th:checked="${linkman!=null&&linkman.linkman_gender=='2'}">女
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>联系人地址 ：</td>
+                        <td>
+                            <input class="textbox" id="sChannel2"
+                                   th:value="${linkman!=null}?${linkman.linkman_address}"
+                                   style="width: 180px" maxLength="50" name="linkman_address">
+                    </tr>
+                    <tr>
+                        <td>联系人电话 ：</td>
+                        <td>
+                            <input class="textbox" id="sChannel2"
+                                   th:value="${linkman!=null}?${linkman.linkman_telephone}"
+                                   style="width: 180px" maxLength="50" name="linkman_telephone">
+                        </td>
+                        <td>所属顾客 ：</td>
+                        <td>
+                            <select name="customer.customer_id">
+                                <option value="">--请选择--</option>
+                                <option th:value="${customer.customer_id }"
+                                        th:each="customer:${customerList}"
+                                        th:selected="${linkman!=null&&linkman.customer!=null}?${linkman.customer.customer_id}==${customer.customer_id}">
+                                    [[${customer.customer_name }]]
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">
+                            <input class="button" id="sButton2" type="submit"
+                                   value=" 保存 " name="sButton2">
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td width="15" th:background="@{/images/new_023.jpg}">
+                <img th:src="@{/images/new_023.jpg}" border=0></td>
+        </tr>
+        </tbody>
+    </table>
+    <div th:replace="commons/decoration::bottom"></div>
+</form>
+</body>
+</html>

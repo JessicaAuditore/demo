@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>顶部</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/top.css}">
+</head>
+<body>
+<form id=form1 name=form1 action="" method=post>
+    <table cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <tbody>
+        <tr>
+            <td width=10><img th:src="@{/images/new_001.jpg}" border=0></td>
+            <td th:background="@{/images/new_002.jpg}"><font size=5><B>客户关系管理系统v2.0</B></font></td>
+            <td th:background="@{/images/new_002.jpg}">
+                <table cellSpacing=0 cellPadding=0 width="100%" border=0>
+                    <tbody>
+                    <tr>
+                        <td align=right height=35></td>
+                    </tr>
+                    <tr>
+                        <td height=35 align="right">
+                            当前用户：[[${session.user.user_realname}]]
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            等级：[[${session.user.user_level}]]
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a th:href="@{/toModifyPage}" target=main><font
+                                    color=red>修改密码</font></a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a th:href="@{/exit}" target=_top><font
+                                    color=red>安全退出</font></a>]
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td width=10><img th:src="@{/images/new_003.jpg}" border=0></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>
