@@ -28,7 +28,7 @@ public class CustomerControl {
         List<Customer> customerList = customerService.findAll();
         model.addAttribute("customerList", customerList);
         model.addAttribute("listDict", customerService.findAllDict());
-        return "/customer/list";
+        return "customer/list";
     }
 
     @GetMapping(value = "/listPage")
@@ -42,14 +42,14 @@ public class CustomerControl {
         PageBean pageBean = customerService.findAll(pageable);
         model.addAttribute("pageBean", pageBean);
         model.addAttribute("listDict", customerService.findAllDict());
-        return "/customer/listPage";
+        return "customer/listPage";
     }
 
     @GetMapping(value = "/toAddPage")
     @ApiOperation(value = "来到客户添加页面", notes = "来到客户添加页面", httpMethod = "GET", tags = "客户管理相关Api")
     public String toAddPage(Model model) {
         model.addAttribute("listDict", customerService.findAllDict());
-        return "/customer/addOrEdit";
+        return "customer/addOrEdit";
     }
 
     @PostMapping(value = "/")
@@ -75,7 +75,7 @@ public class CustomerControl {
     public String showCustomer(Model model, @PathVariable(value = "id") Integer id) {
         model.addAttribute("customer", customerService.findById(id));
         model.addAttribute("listDict", customerService.findAllDict());
-        return "/customer/addOrEdit";
+        return "customer/addOrEdit";
     }
 
     @PutMapping(value = "/")
@@ -111,6 +111,6 @@ public class CustomerControl {
     public String find(Customer customer, Model model) {
         model.addAttribute("customerList", customerService.find(customer.getCustomer_name(), customer.getCustomer_dict().getDict_id()));
         model.addAttribute("listDict", customerService.findAllDict());
-        return "/customer/list";
+        return "customer/list";
     }
 }

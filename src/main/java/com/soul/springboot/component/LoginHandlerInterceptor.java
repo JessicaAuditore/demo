@@ -13,7 +13,7 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Object user = request.getSession().getAttribute("user");
         if (user == null) {
-            request.getRequestDispatcher("/user/login").forward(request, response);
+            request.getRequestDispatcher("user/login").forward(request, response);
             return false;
         } else {
             return true;

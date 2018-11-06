@@ -7,7 +7,7 @@ spring:
       ddl-auto: update #更新或创建数据表结构
     show-sql: true #控制台显示sql
   messages:
-    basename: internationalization.login
+    basename: login
   thymeleaf:
     cache: false
   datasource:

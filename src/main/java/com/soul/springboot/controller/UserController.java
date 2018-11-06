@@ -23,7 +23,7 @@ public class UserController {
 
     @GetMapping(value = "/login")
     public String login() {
-        return "/user/login";
+        return "user/login";
     }
 
     @PostMapping(value = "/loginHandle")
@@ -38,10 +38,10 @@ public class UserController {
         if (user == null) {
             map.put("msg", "用户不存在!");
             session.removeAttribute("name");
-            return "/user/login";
+            return "user/login";
         } else if (user.getUser_password() == null) {
             map.put("msg", "密码错误!");
-            return "/user/login";
+            return "user/login";
         } else {
             session.setAttribute("user", user);
             return "redirect:/index.html";
@@ -52,33 +52,33 @@ public class UserController {
     public String exit(HttpServletRequest request) {
         request.getSession().removeAttribute("user");
         request.getSession().removeAttribute("msg");
-        return "/user/login";
+        return "user/login";
     }
 
 
     @GetMapping(value = "/menu")
     public String menu() {
-        return "/menu";
+        return "menu";
     }
 
     @GetMapping(value = "/top")
     public String top() {
-        return "/top";
+        return "top";
     }
 
     @GetMapping(value = "/welcome")
     public String welcome() {
-        return "/welcome";
+        return "welcome";
     }
 
     @GetMapping(value = "/noRight")
     public String noRight() {
-        return "/state/noRight";
+        return "state/noRight";
     }
 
     @GetMapping(value = "/toModifyPage")
     public String toModifyPage() {
-        return "/user/modify";
+        return "user/modify";
     }
 
     @PostMapping(value = "/modify")
@@ -86,19 +86,19 @@ public class UserController {
         User user = (User) request.getSession().getAttribute("user");
         if (!user.getUser_password().equals(oldPassword)) {
             model.addAttribute("error", "原密码错误");
-            return "/state/error";
+            return "state/error";
         }
         if (!newPassword.equals(repeatPassword)) {
             model.addAttribute("error", "两次输入密码不同");
-            return "/state/error";
+            return "state/error";
         }
         if (oldPassword.equals(newPassword)) {
             model.addAttribute("error", "新密码与原密码相同");
-            return "/state/error";
+            return "state/error";
         }
         user.setUser_password(newPassword);
         userService.saveOrUpdate(user);
         request.getSession().setAttribute("user", user);
-        return "/state/success";
+        return "state/success";
     }
 }
